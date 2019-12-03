@@ -21,7 +21,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="Productivity apps">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <title>CodeChimp Apps</title>
+  <title>CodeChimp</title>
   
   <!-- Add to homescreen for Chrome on Android -->
   <meta name="mobile-web-app-capable" content="yes">
@@ -53,7 +53,7 @@
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
       <div class="mdl-layout__header-row">
-        <h5>CodeChimp<p>Productivity Apps</h5>
+        <h5>CodeChimp<p>Productivity Apps &amp; Tools</h5>
         </div>
         
         <div class="mdl-layout__header-row portfolio-navigation-row">
@@ -62,6 +62,7 @@
             <a class="mdl-navigation__link" id="ios">iOS</a>
             <a class="mdl-navigation__link" id="macos">MacOS</a>
             <a class="mdl-navigation__link" id="android">Android</a>
+            <a class="mdl-navigation__link" id="other">Other</a>
           </nav>
         </div>
       </header>
@@ -105,7 +106,7 @@
               </div>       
             </section>
           </div>  
-          <div class="android">
+          <div class="android" style="margin-bottom: 48px;">
             <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
               <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--white-100 mdl-color-text--white">
                 <image src="images/wearcodes.png"/>
@@ -202,14 +203,48 @@
               </div>
             </section>
           </div>
+          <div class="other" style="margin-bottom: 48px;">
+            <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+              <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--white-100 mdl-color-text--white">
+                <image src="images/lmstvh.png"/>
+              </header>          
+              <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+                <div class="mdl-card__title">
+                  <h4 class="mdl-card__title-text"><b>LMS TVH</b></h4>
+                </div>
+                <div class="mdl-card__supporting-text">
+                  <p>A plugin for Logitech Media Server to allow playing of live radio streams from TVHeadend.</p>
+                </div>
+                <div class="mdl-card__actions">
+                  <a href="https://github.com/codechimp-org/lms-tvh" class="mdl-button mdl-button--accent">View on GitHub</a>
+                </div>
+              </div>       
+            </section>
+            <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+              <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--white-100 mdl-color-text--white">
+                <image src="images/lmsvscode.png"/>
+              </header>          
+              <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+                <div class="mdl-card__title">
+                  <h4 class="mdl-card__title-text"><b>LMS Slim Snippets</b>&nbsp;for Visual Studio Code</h4>
+                </div>
+                <div class="mdl-card__supporting-text">
+                  <p>Snippets for Logitech Media Server dev, provides both perl and html snippets to help with common slim dev tasks.</p>
+                </div>
+                <div class="mdl-card__actions">
+                  <a href="https://marketplace.visualstudio.com/items?itemName=codechimp.lmsslim-snippets" class="mdl-button mdl-button--accent">View on VS Marketplace</a>
+                </div>
+              </div>       
+            </section>
+          </div>  
         </div>
-        <div style="height: 48px; background-color: white;"></div>
+
         <footer class="mdl-mini-footer">
           <div class="mdl-mini-footer__left-section">
             <ul class="mdl-mini-footer__link-list">
               <li><a href="mailto:apps@codechimp.org" class="mdl-button">Contact Us</a></li>            
             </ul> 
-            <span>CodeChimp is a small independent software house specialising in productivity apps.<br>
+            <span>CodeChimp is a small independent software house specialising in productivity apps &amp; tools.<br>
               Copyright &copy; 2019 CodeChimp</span><br><br>
             </div>
             <div class="mdl-mini-footer__right-section">
@@ -246,21 +281,31 @@
           $(".ios").show();
           $(".macos").show();
           $(".android").show();
+          $(".other").show();
         }
         if (this.id == "macos") {
           $(".ios").hide();
           $(".macos").show();
           $(".android").hide();
+          $(".other").hide();
         }
         if (this.id == "ios") {
           $(".ios").show();
           $(".macos").hide();
           $(".android").hide();
+          $(".other").hide();
         }
         if (this.id == "android") {
           $(".ios").hide();
           $(".macos").hide();
           $(".android").show();
+          $(".other").hide();
+        }
+        if (this.id == "other") {
+          $(".ios").hide();
+          $(".macos").hide();
+          $(".android").hide();
+          $(".other").show();
         }
         $btns.removeClass('is-active');
         $(this).addClass('is-active');
