@@ -213,3 +213,7 @@ html, body {
   position: relative;
   font-weight: bold;
 }
+
+a:hover {
+  cursor:pointer;
+}
