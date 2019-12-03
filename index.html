@@ -59,17 +59,16 @@
         <div class="mdl-layout__header-row portfolio-navigation-row">
           <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
             <a class="mdl-navigation__link is-active" id="all">All Apps</a>
-            <a class="mdl-navigation__link" id="android">Android</a>
             <a class="mdl-navigation__link" id="ios">iOS</a>
-            <!-- <a class="mdl-navigation__link" id="macos">MacOS</a> -->
+            <a class="mdl-navigation__link" id="macos">MacOS</a>
+            <a class="mdl-navigation__link" id="android">Android</a>
           </nav>
         </div>
       </header>
       <main class="mdl-layout__content">
         
-        
         <div class="mdl-layout__tab-panel is-active" id="apps">
-          <div class="ios">
+          <div class="ios" style="margin-bottom: 48px;">
             <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
               <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--white-100 mdl-color-text--white">
                 <image src="images/whendo.png"/>
@@ -88,6 +87,24 @@
               </div>       
             </section>
           </div>   
+          <div class="macos" style="margin-bottom: 48px;">
+            <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+              <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--white-100 mdl-color-text--white">
+                <image src="images/hamenu.png"/>
+              </header>          
+              <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+                <div class="mdl-card__title">
+                  <h4 class="mdl-card__title-text"><b>HA Menu</b>&nbsp;for MacOS</h4>
+                </div>
+                <div class="mdl-card__supporting-text">
+                  <p>A Mac OS Menu Bar app to perform common Home Assistant functions.</p>
+                </div>
+                <div class="mdl-card__actions">
+                  <a href="https://github.com/andrew-codechimp/ha-menu" class="mdl-button mdl-button--accent">View on GitHub</a>
+                </div>
+              </div>       
+            </section>
+          </div>  
           <div class="android">
             <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
               <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--white-100 mdl-color-text--white">
@@ -167,6 +184,23 @@
                 </div>
               </div>
             </section>
+            <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+              <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--white-100 mdl-color-text--white">
+                <image src="images/ttw.png"/>
+              </header>
+              <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+                <div class="mdl-card__title">
+                  <h4 class="mdl-card__title-text"><b>Tasker Tap Wear</b></h4>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    This app is a Tasker plugin to trigger a vibration pattern on the wearable device only, for a discreet notification tap where a popup is not required.</br>
+                    To use it create a new Tasker task and add TTW from the plugins. You'll be able to change the type of vibration tap within the configuration screen.
+                </div>
+                <div class="mdl-card__actions">
+                  <a href="https://play.google.com/store/apps/details?id=org.codechimp.ttw" class="mdl-button mdl-button--accent">View on Google PlayStore</a>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
         <footer class="mdl-mini-footer">
@@ -209,14 +243,22 @@
       var $btns = $('.mdl-navigation__link').on("click", function() {
         if (this.id == "all") {
           $(".ios").show();
+          $(".macos").show();
           $(".android").show();
+        }
+        if (this.id == "macos") {
+          $(".ios").hide();
+          $(".macos").show();
+          $(".android").hide();
         }
         if (this.id == "ios") {
           $(".ios").show();
+          $(".macos").hide();
           $(".android").hide();
         }
         if (this.id == "android") {
           $(".ios").hide();
+          $(".macos").hide();
           $(".android").show();
         }
         $btns.removeClass('is-active');
