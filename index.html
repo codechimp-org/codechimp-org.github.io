@@ -48,7 +48,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.1.3/material.indigo-pink.min.css"> 
   <link rel="stylesheet" href="stylesheets/styles.css">  
-
+  
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
 </head>
 <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
@@ -196,8 +196,8 @@
                   <h4 class="mdl-card__title-text"><b>Tasker Tap Wear</b></h4>
                 </div>
                 <div class="mdl-card__supporting-text">
-                    This app is a Tasker plugin to trigger a vibration pattern on the wearable device only, for a discreet notification tap where a popup is not required.</br>
-                    To use it create a new Tasker task and add TTW from the plugins. You'll be able to change the type of vibration tap within the configuration screen.
+                  This app is a Tasker plugin to trigger a vibration pattern on the wearable device only, for a discreet notification tap where a popup is not required.</br>
+                  To use it create a new Tasker task and add TTW from the plugins. You'll be able to change the type of vibration tap within the configuration screen.
                 </div>
                 <div class="mdl-card__actions">
                   <a href="https://play.google.com/store/apps/details?id=org.codechimp.ttw" class="mdl-button mdl-button--accent">View on Google PlayStore</a>
@@ -240,7 +240,7 @@
             </section>
           </div>  
         </div>
-
+        
         <footer class="mdl-mini-footer">
           <div class="mdl-mini-footer__left-section">
             <ul class="mdl-mini-footer__link-list">
@@ -250,91 +250,90 @@
               Copyright &copy; 2019 CodeChimp<br>
               <a href="https://codechimp.org/privacy/">Privacy Policy</a>
             </span><br><br>
-            </div>
-            <div class="mdl-mini-footer__right-section">
-              <ul class="mdl-mini-footer__link-list">
-                <li><a href="https://twitter.com/AndrewCodeChimp"><img src="images/Twitter_Social_Icon_Square_Color.png" width="48" height="48" title="Twitter" alt="Twitter"></a></li>            
-              </ul> 
-            </div>
-          </footer>
-          <div id="cookieconsent"></div>
-        </div>
-      </main>
-    </div>  
-    <script
-    src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
-    crossorigin="anonymous"></script>
-    <script src="https://storage.googleapis.com/code.getmdl.io/1.1.3/material.min.js">
-    </script>
-    
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-      
-      ga('create', 'UA-2000990-16', 'auto');
-      ga('require', 'outboundLinkTracker');
-      ga('require', 'socialTracker');
-      ga('send', 'pageview');
-    </script>
-    
-    <script>
-      var $btns = $('.mdl-navigation__link').on("click", function() {
-        if (this.id == "all") {
-          $(".ios").show();
-          $(".macos").show();
-          $(".android").show();
-          $(".other").show();
-        }
-        if (this.id == "macos") {
-          $(".ios").hide();
-          $(".macos").show();
-          $(".android").hide();
-          $(".other").hide();
-        }
-        if (this.id == "ios") {
-          $(".ios").show();
-          $(".macos").hide();
-          $(".android").hide();
-          $(".other").hide();
-        }
-        if (this.id == "android") {
-          $(".ios").hide();
-          $(".macos").hide();
-          $(".android").show();
-          $(".other").hide();
-        }
-        if (this.id == "other") {
-          $(".ios").hide();
-          $(".macos").hide();
-          $(".android").hide();
-          $(".other").show();
-        }
-        $btns.removeClass('is-active');
-        $(this).addClass('is-active');
-      })
-    </script>
-
-<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
-<script>
-window.cookieconsent.initialise({
-  "palette": {
-    "popup": {
-      "background": "#000"
-    },
-    "button": {
-      "background": "#e91e63"
-    }
-  }
-});
-</script>
-
-        
-    <script async src='js/autotrack.js'></script>
-    
-    
-  </body>
-  </html>
+          </div>
+          <div class="mdl-mini-footer__right-section">
+            <ul class="mdl-mini-footer__link-list">
+              <li><a href="https://twitter.com/AndrewCodeChimp"><img src="images/Twitter_Social_Icon_Square_Color.png" width="48" height="48" title="Twitter" alt="Twitter"></a></li>            
+            </ul> 
+          </div>
+        </footer>
+        <div id="cookieconsent"></div>
+      </div>
+    </main>
+  </div>  
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+  crossorigin="anonymous"></script>
+  <script src="https://storage.googleapis.com/code.getmdl.io/1.1.3/material.min.js">
+  </script>
   
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-2000990-16', 'auto');
+    ga('require', 'outboundLinkTracker');
+    ga('require', 'socialTracker');
+    ga('send', 'pageview');
+  </script>
+  
+  <script>
+    var $btns = $('.mdl-navigation__link').on("click", function() {
+      if (this.id == "all") {
+        $(".ios").show();
+        $(".macos").show();
+        $(".android").show();
+        $(".other").show();
+      }
+      if (this.id == "macos") {
+        $(".ios").hide();
+        $(".macos").show();
+        $(".android").hide();
+        $(".other").hide();
+      }
+      if (this.id == "ios") {
+        $(".ios").show();
+        $(".macos").hide();
+        $(".android").hide();
+        $(".other").hide();
+      }
+      if (this.id == "android") {
+        $(".ios").hide();
+        $(".macos").hide();
+        $(".android").show();
+        $(".other").hide();
+      }
+      if (this.id == "other") {
+        $(".ios").hide();
+        $(".macos").hide();
+        $(".android").hide();
+        $(".other").show();
+      }
+      $btns.removeClass('is-active');
+      $(this).addClass('is-active');
+    })
+  </script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+  <script>
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#000"
+        },
+        "button": {
+          "background": "#e91e63"
+        }
+      }
+    });
+  </script>
+  
+  
+  <script async src='js/autotrack.js'></script>
+  
+  
+</body>
+</html>
