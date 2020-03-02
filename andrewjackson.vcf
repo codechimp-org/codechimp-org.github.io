@@ -1,0 +1,8 @@
+BEGIN:VCARD
+VERSION:3.0
+FN;CHARSET=UTF-8:Andrew Jackson
+N;CHARSET=UTF-8:Jackson;Andrew;;;
+EMAIL;CHARSET=UTF-8;type=HOME,INTERNET:andrew@codechimp.org
+URL;CHARSET=UTF-8:https://codechimp.org
+X-SOCIALPROFILE;type=twitter:https://twitter.com/andrewcodechimp
+END:VCARD
