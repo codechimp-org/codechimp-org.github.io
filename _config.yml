@@ -10,6 +10,8 @@ github_username:  andrew-codechimp
 # Build settings
 theme: minima
 
+permalink: /:title/
+
 plugins:
   - jekyll-feed
   - jekyll-gist
