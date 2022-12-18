@@ -4,7 +4,7 @@ email: andrew@codechimp.org
 #   Productivity Apps & Tools
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://codechimp.org" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: andrewcodechimp
+# twitter_username: andrewcodechimp
 github_username:  andrew-codechimp
 # mastodon:
 # - username: codechimp
