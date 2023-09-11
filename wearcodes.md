@@ -95,6 +95,9 @@ With Wear OS 2 the watch app is installed separately. This should be prompted au
 To install the watch app go to the Play Store on your watch, search for Wear Codes and install it.
 Once installed it should now be synced with any codes added to your phone app.  
 
+# Wear Codes will not download the companion app on my Wear OS 4 watch?  
+Wear OS 4 is not supported by Wear Codes.  
+
 # Will Wear Codes work on my Samsung® Tizen watch?
 No, except for the very latest Samsung watches, they run a proprietary operating system called Tizen® which is not compatible with Android Wear.  
 Wear Codes will not install/work on Samsung Tizen watches.  
