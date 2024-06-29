@@ -1,1 +1,0 @@
-A Home Assistant integration that adds the Mealie meal planner calendar and shopping lists into Home Assistant with images and text sensors for today's meals.
