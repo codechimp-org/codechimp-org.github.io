@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Creating a curated color picker in SwiftUI | CodeChimp</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Creating a curated color picker in SwiftUI" />
+<meta name="author" content="Andrew Jackson" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="CodeChimp landing website" />
+<meta property="og:description" content="CodeChimp landing website" />
+<link rel="canonical" href="http://localhost:4000/creating-a-curated-color-picker-in-swiftui/" />
+<meta property="og:url" content="http://localhost:4000/creating-a-curated-color-picker-in-swiftui/" />
+<meta property="og:site_name" content="CodeChimp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-09-20T15:00:36+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Creating a curated color picker in SwiftUI" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Andrew Jackson"},"dateModified":"2020-09-20T15:00:36+01:00","datePublished":"2020-09-20T15:00:36+01:00","description":"CodeChimp landing website","headline":"Creating a curated color picker in SwiftUI","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/creating-a-curated-color-picker-in-swiftui/"},"url":"http://localhost:4000/creating-a-curated-color-picker-in-swiftui/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css">
+  <link rel="shortcut icon" type="image/png" href="favicon.png"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="CodeChimp" /><script src="https://kit.fontawesome.com/ea8bca3c5d.js" crossorigin="anonymous"></script>
+</head><body><header class="site-header" role="banner">
+    
+    <div class="wrapper"><a class="site-title" rel="author" href="/">CodeChimp</a><nav class="site-nav">
+            <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+            <label for="nav-trigger">
+                <span class="menu-icon">
+                    <svg viewBox="0 0 18 15" width="18px" height="15px">
+                        <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+                    </svg>
+                </span>
+            </label>
+            
+            <div class="trigger">
+                <a class="page-link" href=/blog>Blog</a>
+                <a class="page-link" href=/privacy>Privacy Policy</a>
+            </div>
+        </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <header class="post-header">
+        <h1 class="post-title p-name" itemprop="name headline">Creating a curated color picker in SwiftUI</h1>
+        <p class="post-meta">
+            <div class="post-dt" style="width:60%; float:left" align-items: center;>
+                <i class="fa-solid fa-calendar"></i>
+                &nbsp;
+                <time class="dt-published" datetime="2020-09-20T15:00:36+01:00" itemprop="datePublished">Sep 20, 2020
+                </time></div>
+            
+            
+            <div class="post-categories" style="width:40%; float:right">
+                <div class="post-categories-list" style="display: flex; justify-content: flex-end; align-items: center;">
+                    <i class="fa-solid fa-tags"></i>
+                    &nbsp;
+                    
+                    
+                    <a href="/categories/#swiftui">swiftui</a>
+                    &nbsp;
+                    
+                    <a href="/categories/#iosdev">iosdev</a>
+                    
+                    
+                </div>
+            </div>
+            
+        </p>
+        
+        
+    </header>
+    
+    <div class="post-content e-content" itemprop="articleBody">
+        <p><img src="/assets/2020-09-20-creating-a-curated-color-picker-in-swiftui/header.png" alt="Header Image" /></p>
+
+<p>Color pickers are used frequently in both iOS and Mac apps to differentiate folders/lists/items in Apple’s own app’s like Shortcuts and Reminders and many indie app’s offer similar functionality.</p>
+
+<p>With SwiftUI 2 Apple added the ColorPicker control and you think great, one quick line of code and I have a color picker, but this isn’t constrained, users can pick any color imaginable, great for paint apps, not so great where we are trying to maintain a style to our app and deal with overlaid text or graphics.</p>
+
+<p>Recently watching a non-tech family member discover they can customize their messaging app and the awful contrast choices made you really don’t want to let users have this much power. Even Apple don’t use the generic full palette picker in their apps, instead providing a curated palette to choose from, colors that they know will look good.
+When thinking of a solution to this I first started with throwing some RGB colored circles in a list and storing the value. That gets you part of the way but doesn’t allow for colors that adapt well between dark/light mode, high contrast or platform variations for iPhone, iPad, Mac, Apple Watch, TV and CarPlay which all have their own subtle requirements.</p>
+
+<p>In this article I’ll walk you through how I solved this and create a color picker, which I’ve called ColorSwatchView, that can cope with all these different requirements and always present the user with a pleasing color scheme. That’s as long as we can create a pleasing palette for them to choose from in the first place!
+Creating the colors</p>
+
+<p>Within Xcode’s Assets file where we usually add our app icon we can also add other assets, one of these being Colors. Adding an asset color allows us to give a name to a color and then add variants for all the different devices/settings we want to cater for. This way we can have varying RGB values but if we always refer to it by name we will get the appropriate variant for the current scenario.</p>
+
+<h1 id="adding-a-color-set-to-our-assets">Adding a Color Set to our assets.</h1>
+
+<p>Within our project open the Assets.xcassets file and then use the + button at the bottom of the asset list and select add Color Set, then give our new color set a name, here I have chosen to prefix all my color sets with swatch_ so I can easily tell which I’m using for my swatch view.</p>
+
+<p><img src="/assets/2020-09-20-creating-a-curated-color-picker-in-swiftui/assets.png" alt="Assets Image" /></p>
+
+<p>Once we’ve created our color set we get a single universal color which we can set using the standard color pickers.</p>
+
+<p>When I first started with Xcode I was confused as to why a single color was called a Color Set. It’s to allow us to create alternative colors for different scenarios which we’ll do now.</p>
+
+<h1 id="creating-alternative-colors">Creating alternative colors</h1>
+<p>Whilst a single universal color is a good starting point we will probably want to create variants at least for dark mode. To do this we can use the Attribute Inspector button at the top right to get on this pane where we can choose what color variants we want to add. Here I have used the Appearances section to add a dark color but we can use as many combinations of Devices and Appearances as we need to give the best colors for the particular device/setting.</p>
+
+<p><img src="/assets/2020-09-20-creating-a-curated-color-picker-in-swiftui/colors.png" alt="Colors Image" /></p>
+
+<h1 id="creating-the-color-swatch-view">Creating the Color Swatch View</h1>
+<p>Now we understand why we should use named color assets and not native colors this part is pretty easy.
+We define our color assets as an array of strings, in the order we want them displayed in the swatch grid.</p>
+
+<p>The <code>@binding</code> property is used to set/hold the currently selected color asset name.</p>
+
+<p>We’re using a <code>LazyVGrid</code> introduced in SwiftUI 2 to automatically layout our color swatch circles, automatically adjusting for the width of the view. We do that by defining our Columns to be adaptive with a minimum width and let <code>LazyVGrid</code> do all the work, it’s not called Lazy for nothing 😀</p>
+
+<p>Within the <code>LazyVGrid</code> we iterate round our named swatches and create a filled circle, colouring the circle by creating a color from our current swatch name. We add an <code>onTapGesture</code> to this to set the selection to be this swatch name.</p>
+
+<p>To show the current selection we conditionally add a slightly larger circle, this time we just want an outline rather than filled. We conditionally show this based on whether the current swatch we are iterating round is equal to the selection.</p>
+
+<p>Because both circles are wrapped in a <code>ZStack</code> they’ll appear on top of each other giving us a nice outlined circle for the current selection.</p>
+
+<script src="https://gist.github.com/fcddd8af5f9e9bf5a4123ef5d9d59052.js"> </script>
+
+<h1 id="using-the-color-swatch-view">Using the Color Swatch View</h1>
+<p>To use our newly created ColorSwatchView control we just add it to our view, assign it a <code>@state</code> and for demo purposes I’ve put a rectangle beneath that reflects the currently selected color by setting a <code>fill</code> and creating a <code>Color</code> with our stored asset name. In a real world scenario we’d save this asset name away in our user defaults or other preferred persistent storage.</p>
+
+<script src="https://gist.github.com/6b573d614c7337b96946bfb3a2ca8837.js"> </script>
+
+<h2 id="wrap-up">Wrap Up</h2>
+<p>When we run the app we’ll see the Color Swatches displayed in a grid that automatically accommodates the horizontal space available. Choosing a color will change the sample rectangle view below and changing to dark mode will use the slightly more vibrant green color we set.</p>
+
+<p><img src="/assets/2020-09-20-creating-a-curated-color-picker-in-swiftui/demo.gif" alt="Demo Image" /></p>
+
+<p>This is purely a sample and I’m not an expert in color theory so I’ll leave it up to you to decide what variants you need for your particular use cases.</p>
+
+<p>I hope you found this article useful in both how to use Color Sets and also creating a view control for selecting your curated colors.</p>
+
+    </div><a class="u-url" href="/creating-a-curated-color-picker-in-swiftui/" hidden></a>
+</article>
+
+<script>
+  document
+    .querySelector('.post-content')
+    .querySelectorAll('pre.highlight')
+    .forEach(function (pre) {
+      var button = document.createElement('button');
+      var copyText = 'Copy';
+      button.className = 'copy';
+      button.type = 'button';
+      button.ariaLabel = 'Copy code to clipboard';
+      button.innerText = copyText;
+      button.addEventListener('click', function () {
+        var code = pre.querySelector('code').innerText.trim();
+        navigator.clipboard.writeText(code);
+        button.innerText = 'Copied';
+        setTimeout(function () {
+          button.innerText = copyText;
+        }, 4000);
+      });
+      pre.appendChild(button);
+    });
+</script>
+
+      </div>
+    </main><footer class="site-footer h-card">
+    <data class="u-url" href="/"></data>
+    
+    <div class="wrapper">
+        
+        <div class="social-links"><ul class="social-media-list"><li><a href="https://github.com/andrew-codechimp"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">andrew-codechimp</span></a></li></ul>
+<ul class="social-media-list"><li><a rel="me" href="https://mastodon.online/@codechimp"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#mastodon"></use></svg> <span class="username">codechimp</span></a></li></ul>
+        </div>
+        
+        <div class="copyright">
+            Copyright © 2025 CodeChimp
+        </div>
+    </div>
+    
+</footer>
+</body>
+
+</html>

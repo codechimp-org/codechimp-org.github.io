@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Multiple Complications in watchOS 7 | CodeChimp</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Multiple Complications in watchOS 7" />
+<meta name="author" content="Andrew Jackson" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="CodeChimp landing website" />
+<meta property="og:description" content="CodeChimp landing website" />
+<link rel="canonical" href="http://localhost:4000/multiple-complications-in-watchos7/" />
+<meta property="og:url" content="http://localhost:4000/multiple-complications-in-watchos7/" />
+<meta property="og:site_name" content="CodeChimp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-12-03T14:00:36+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Multiple Complications in watchOS 7" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Andrew Jackson"},"dateModified":"2020-12-03T14:00:36+00:00","datePublished":"2020-12-03T14:00:36+00:00","description":"CodeChimp landing website","headline":"Multiple Complications in watchOS 7","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/multiple-complications-in-watchos7/"},"url":"http://localhost:4000/multiple-complications-in-watchos7/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css">
+  <link rel="shortcut icon" type="image/png" href="favicon.png"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="CodeChimp" /><script src="https://kit.fontawesome.com/ea8bca3c5d.js" crossorigin="anonymous"></script>
+</head><body><header class="site-header" role="banner">
+    
+    <div class="wrapper"><a class="site-title" rel="author" href="/">CodeChimp</a><nav class="site-nav">
+            <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+            <label for="nav-trigger">
+                <span class="menu-icon">
+                    <svg viewBox="0 0 18 15" width="18px" height="15px">
+                        <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+                    </svg>
+                </span>
+            </label>
+            
+            <div class="trigger">
+                <a class="page-link" href=/blog>Blog</a>
+                <a class="page-link" href=/privacy>Privacy Policy</a>
+            </div>
+        </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <header class="post-header">
+        <h1 class="post-title p-name" itemprop="name headline">Multiple Complications in watchOS 7</h1>
+        <p class="post-meta">
+            <div class="post-dt" style="width:60%; float:left" align-items: center;>
+                <i class="fa-solid fa-calendar"></i>
+                &nbsp;
+                <time class="dt-published" datetime="2020-12-03T14:00:36+00:00" itemprop="datePublished">Dec 3, 2020
+                </time></div>
+            
+            
+            <div class="post-categories" style="width:40%; float:right">
+                <div class="post-categories-list" style="display: flex; justify-content: flex-end; align-items: center;">
+                    <i class="fa-solid fa-tags"></i>
+                    &nbsp;
+                    
+                    
+                    <a href="/categories/#swiftui">swiftui</a>
+                    &nbsp;
+                    
+                    <a href="/categories/#iosdev">iosdev</a>
+                    
+                    
+                </div>
+            </div>
+            
+        </p>
+        
+        
+    </header>
+    
+    <div class="post-content e-content" itemprop="articleBody">
+        <p><img src="/assets/2020-12-03-multiple-complications-in-watchos7/header.jpeg" alt="Header Image" /></p>
+
+<p>With watchOS 7, you can now add multiple complications to your app, exposing different types of views onto your data. Whilst the demo at WWDC 2020 showed how to add multiple complications, it did not detail how to handle interacting with them. For a good user experience when a complication is tapped, you want to open your app in a state that’s relevant to that particular complication.</p>
+
+<p>This article will show you how to add different complications, update them when their descriptions change, and also respond to a particular complication type being tapped.</p>
+
+<p>For our example, we’ll create a simple tabbed watch app showing the headline of three publications. You will be able to add any of these publications to a watch face, and when tapped, it will open the app with the correct tab showing.</p>
+
+<p>We will just create one complication family for this example — a <code class="language-plaintext highlighter-rouge">graphicRectangular,</code> which is great for text. So when testing, ensure that you are using a watch face that allows this complication. Infograph Modular will be fine and is my preferred test watch face, as it allows several different complication families. Once you’ve added one family, it’s just rinse-and-repeat to support as many families as you want.</p>
+
+<p>Here’s our app in action:</p>
+
+<p><img src="/assets/2020-12-03-multiple-complications-in-watchos7/demo.gif" alt="Demo Image" /></p>
+
+<p>Throughout this article, I will call out the relevant code you will need to add to an existing watch app project.</p>
+
+<hr />
+
+<h1 id="setting-up-the-watch-app">Setting Up the Watch App</h1>
+<p>Before we get to the complications, we need to create the actual watch app.</p>
+
+<p>For this example, we will create a simple static data model shared between the app and the complications:</p>
+
+<script src="https://gist.github.com/83f267cb9f807602d31a799db72d2b70.js"> </script>
+
+<p>To view this in the app, we’ll reutilise the default <code class="language-plaintext highlighter-rouge">ContentView</code> provided by a new watch app template, just adding a publication state variable and displaying the properties:</p>
+
+<script src="https://gist.github.com/b43decdfd79dc0569f790d914f8858d4.js"> </script>
+
+<p>For the tabs, we will reuse this single <code class="language-plaintext highlighter-rouge">ContentView</code> and use the new SwiftUI app lifecycle to add tabs, passing in the publication to make them distinct. In your <code class="language-plaintext highlighter-rouge">App.swift</code> file, change the <code class="language-plaintext highlighter-rouge">WindowGroup</code> to add the tabs with an <code class="language-plaintext highlighter-rouge">@state</code> variable to maintain the currently selected tab. The tag modifiers of each <code class="language-plaintext highlighter-rouge">ContentView</code> are important. These are what map the <code class="language-plaintext highlighter-rouge">selectedTab</code> state to each view:</p>
+
+<script src="https://gist.github.com/fe19e90ba685a89c1ae76fae3d46d27e.js"> </script>
+
+<p>That’s all you need for the app at the moment. You’ll have three views you can swipe through, each showing their publication name and latest headline.</p>
+
+<hr />
+
+<h1 id="creating-the-complications">Creating the Complications</h1>
+<p>If you’ve created basic complications, you’ll know <code class="language-plaintext highlighter-rouge">ComplicationController</code> is where all the magic happens to expose your complications. Most of this is boilerplate. The only part we’ll change is the actual information displayed on the complication. We’ll also register our different complication types for each of the tabs.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">getLocalizableSampleTemplate</code> function is what will get presented on the preview for adding a new complication. It’s important to note that this is cached and so cannot be updated to show real complication data. The complication descriptors are what we use to give uniqueness to each complication (which we will handle soon), so this template just shows placeholder text for the publication and the latest headline:</p>
+
+<script src="https://gist.github.com/3d94c6516085452dcd67ed24efebc36f.js"> </script>
+
+<p>The <code class="language-plaintext highlighter-rouge">createTemplate</code> function is very simple. We’ll get the publication for the identifier selected for this complication and display the publication name and latest headline:</p>
+
+<script src="https://gist.github.com/d2c01a2a1a72ee46a7183375fab4f7cb.js"> </script>
+
+<p>Nothing new so far. The important element added with watchOS 7 is the <code class="language-plaintext highlighter-rouge">getComplicationDescriptors</code> function. This allows us to describe what complications we are making available:</p>
+
+<script src="https://gist.github.com/d7e731b697a274bd6a7b229156db13d3.js"> </script>
+
+<p>What we are doing here is creating descriptors for our tabs of data. The <code class="language-plaintext highlighter-rouge">displayName</code> is what’s used when editing a watch face to describe the particular complication instance. The <code class="language-plaintext highlighter-rouge">Dictionary</code> and <code class="language-plaintext highlighter-rouge">NSUserActivity</code> are how we identify the complication type the user has tapped on when we re-enter our app, which we’ll get into next.</p>
+
+<p>It’s important to note that there is a limit to the number of descriptors you can add. Though not documented, it appears that the limit is currently ten for third-party apps.</p>
+
+<hr />
+
+<h1 id="responding-to-complication-taps">Responding to Complication Taps</h1>
+<p>Back to our app code. We need to know when a complication is tapped. This is achieved by registering for onContinueUserActivity events for your activity type you specified when creating the descriptors:</p>
+
+<script src="https://gist.github.com/5d5b3a24bfa74dfd4f62fdbba273ebcc.js"> </script>
+
+<p>Here, we are adding <code class="language-plaintext highlighter-rouge">onContinueUserActivity</code> to our <code class="language-plaintext highlighter-rouge">NavigationView</code> and changing the <code class="language-plaintext highlighter-rouge">selectedTab</code> state variable to the ID passed in the <code class="language-plaintext highlighter-rouge">userActivity</code>, which will change our tab view to the relevant tab.</p>
+
+<h1 id="updating-complication-descriptions">Updating Complication Descriptions</h1>
+<p>Whilst not necessary in this example, if your complications change, you will want to update the descriptors and probably the timeline for existing complications. For this, we’ll use the new <code class="language-plaintext highlighter-rouge">scenePhase</code> change to detect when our app goes into the background and notify watchOS that we have changed things:</p>
+
+<script src="https://gist.github.com/e5be043529e8feb89705946693a01122.js"> </script>
+
+<hr />
+
+<h1 id="wrapping-up">Wrapping Up</h1>
+<p>Although this is a simple example, I hope the techniques described here allow you to add multiple-complication support to your watch apps, allowing users to choose data that’s most relevant to them and display it on their watch faces.</p>
+
+<p>A full example project is available on <a href="https://github.com/andrew-codechimp/Multi-Complication-Example">GitHub</a>.</p>
+
+    </div><a class="u-url" href="/multiple-complications-in-watchos7/" hidden></a>
+</article>
+
+<script>
+  document
+    .querySelector('.post-content')
+    .querySelectorAll('pre.highlight')
+    .forEach(function (pre) {
+      var button = document.createElement('button');
+      var copyText = 'Copy';
+      button.className = 'copy';
+      button.type = 'button';
+      button.ariaLabel = 'Copy code to clipboard';
+      button.innerText = copyText;
+      button.addEventListener('click', function () {
+        var code = pre.querySelector('code').innerText.trim();
+        navigator.clipboard.writeText(code);
+        button.innerText = 'Copied';
+        setTimeout(function () {
+          button.innerText = copyText;
+        }, 4000);
+      });
+      pre.appendChild(button);
+    });
+</script>
+
+      </div>
+    </main><footer class="site-footer h-card">
+    <data class="u-url" href="/"></data>
+    
+    <div class="wrapper">
+        
+        <div class="social-links"><ul class="social-media-list"><li><a href="https://github.com/andrew-codechimp"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">andrew-codechimp</span></a></li></ul>
+<ul class="social-media-list"><li><a rel="me" href="https://mastodon.online/@codechimp"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#mastodon"></use></svg> <span class="username">codechimp</span></a></li></ul>
+        </div>
+        
+        <div class="copyright">
+            Copyright © 2025 CodeChimp
+        </div>
+    </div>
+    
+</footer>
+</body>
+
+</html>
