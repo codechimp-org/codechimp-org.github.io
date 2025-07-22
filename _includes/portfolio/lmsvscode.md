@@ -1,2 +1,1 @@
-Snippets for Logitech Media Server dev, provides both perl and html snippets to help with common slim dev tasks.
-
+Snippets for Lyrion Media Server development, provides both perl and html snippets to help with common slim dev tasks.
